@@ -4,7 +4,7 @@
 
 namespace DemoWeb.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[Action]")]
     [ApiController]
     public class HouseController : ControllerBase
     {        
