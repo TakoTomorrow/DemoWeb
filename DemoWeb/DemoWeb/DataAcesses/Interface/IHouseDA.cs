@@ -25,5 +25,13 @@ namespace DemoWeb.DataAcesses.Interface
         /// <param name="house"></param>
         /// <returns></returns>
         public Task ModifyAsync(House house);
+        
+        /// <summary>
+        /// 刪除房屋資料
+        /// </summary>
+        /// <param name="house"></param>
+        /// <returns></returns>
+        public Task DeleteAsync(House house);
+
     }
 }

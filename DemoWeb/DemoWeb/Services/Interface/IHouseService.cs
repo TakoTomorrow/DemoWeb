@@ -25,5 +25,12 @@ namespace DemoWeb.Services.Interface
         /// <param name="dto"></param>
         /// <returns></returns>
         public Task ModifyAsync(HouseDTO dto);
+        
+        /// <summary>
+        /// 刪除房屋資料
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public Task DeleteAsync(int id);
     }
 }

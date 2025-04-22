@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DemoWeb.DataAcesses
 {
-    internal class HouseDA: IHouseDA
+    internal class HouseDA : IHouseDA
     {
         private readonly DemoDbContext _context;
 
@@ -16,7 +16,7 @@ namespace DemoWeb.DataAcesses
         }
 
         public async Task CreateAsync(House house)
-        {            
+        {
             await _context.Houses.AddAsync(house);
             await _context.SaveChangesAsync();
         }
@@ -24,7 +24,7 @@ namespace DemoWeb.DataAcesses
         public async Task<House> GetAsync(int id)
         {
             return (await _context.Houses
-                .Where(h => h.Id == id)            
+                .Where(h => h.Id == id)
                 .FirstOrDefaultAsync())!;
         }
 
@@ -32,6 +32,12 @@ namespace DemoWeb.DataAcesses
         {
             _context.Houses.Update(house);
             await _context.SaveChangesAsync();
+        }
+
+        public async Task DeleteAsync(House house)
+        {            
+            _context.Remove(house);
+            await _context.SaveChangesAsync();                    
         }
     }
 }

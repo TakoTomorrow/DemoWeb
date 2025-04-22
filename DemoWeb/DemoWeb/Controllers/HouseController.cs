@@ -82,10 +82,24 @@ namespace DemoWeb.Controllers
             }      
         }
 
-        // DELETE api/<HouseController>/5
+        /// <summary>
+        /// 刪除房屋資料
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async Task<Response> DeleteAsync(int id)
         {
+            try
+            {
+                await _houseService.DeleteAsync(id);
+
+                return new Models.Response(ResponseCode.Success);
+            }
+            catch (Exception ex)
+            {
+                return new Models.Response(ResponseCode.Error, ex.Message);
+            }      
         }
     }
 }

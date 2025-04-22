@@ -22,7 +22,7 @@ namespace DemoWeb.Services
             house.UpdateDate = DateTime.Now;
 
             await _houseDA.CreateAsync(house);
-        }
+        }       
 
         public async Task<HouseDTO> GetAsync(int id)
         {
@@ -44,6 +44,16 @@ namespace DemoWeb.Services
             var newHouse = this.Convert(dto);
 
             await _houseDA.ModifyAsync(newHouse);
+        }
+
+        public async Task DeleteAsync(int id)
+        {
+            var house = await _houseDA.GetAsync(id);
+
+            if (house == null)
+                return;
+
+            await _houseDA.DeleteAsync(house);
         }
 
         /// <summary>
