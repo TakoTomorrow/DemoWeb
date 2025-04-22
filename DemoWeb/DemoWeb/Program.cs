@@ -1,6 +1,16 @@
+using DemoWeb.DataBaseContext;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
+
+var dbPath = builder.Configuration.GetConnectionString("DefaultConnection");
+builder.Services.AddDbContext<DemoDbContext>(options =>
+{
+    options.UseSqlite($"Data Source={dbPath}");
+});
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
