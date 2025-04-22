@@ -24,6 +24,23 @@ namespace DemoWeb.Services
             await _houseDA.CreateAsync(house);    
         }
 
+        public async Task<HouseDTO> GetAsync(int id)
+        {
+            var house = await _houseDA.GetAsync(id);
+
+            if (house == null)            
+                return null!;
+            
+            return new HouseDTO
+            {
+                Id = house.Id,
+                Address = house.Address,
+                NumberOfRooms = house.NumberOfRooms,
+                NumberOfUnits = house.NumberOfUnits,
+                Price = house.Price
+            };
+        }
+
         /// <summary>
         /// 轉換 DTO 為 DB Table
         /// </summary>

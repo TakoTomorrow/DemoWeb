@@ -19,6 +19,16 @@
         public string Message { get; set; } = string.Empty;
     }
 
+    public class Response<T> : Response
+    {
+        public Response(T data, ResponseCode code,  string message = "") : base(code, message)
+        {
+            Data = data;
+        }
+        
+        public T? Data { get; set; } = default!;
+    }
+
     public enum ResponseCode
     {
         Success = 0,

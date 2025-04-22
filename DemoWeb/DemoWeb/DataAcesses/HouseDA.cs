@@ -2,6 +2,7 @@
 using DemoWeb.DataBaseContext;
 using DemoWeb.DataBaseContext.DbModels;
 using DemoWeb.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace DemoWeb.DataAcesses
 {
@@ -18,6 +19,13 @@ namespace DemoWeb.DataAcesses
         {            
             await _context.Houses.AddAsync(house);
             await _context.SaveChangesAsync();
+        }
+
+        public async Task<House> GetAsync(int id)
+        {
+            return (await _context.Houses
+                .Where(h => h.Id == id)            
+                .FirstOrDefaultAsync())!;
         }
     }
 }

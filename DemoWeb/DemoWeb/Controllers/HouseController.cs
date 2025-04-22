@@ -20,9 +20,23 @@ namespace DemoWeb.Controllers
 
         // GET api/<HouseController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public async Task<Response<HouseDTO>> GetAsync(int id)
         {
-            return "value";
+            try
+            {
+                var house = await _houseService.GetAsync(id);
+
+                if (house == null)
+                {
+                    return new Response<HouseDTO>(null!, ResponseCode.Error, "查無資料");
+                }
+
+                return new Response<HouseDTO>(house, ResponseCode.Success);
+            }
+            catch (Exception ex)
+            {
+                return new Response<HouseDTO>(null!, ResponseCode.Error, ex.Message);
+            }
         }
 
         /// <summary>

@@ -11,5 +11,12 @@ namespace DemoWeb.DataAcesses.Interface
         /// <param name="house"></param>
         /// <returns></returns>
         public Task CreateAsync(House house);
+
+        /// <summary>
+        /// 取得房屋資料 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public Task<House> GetAsync(int id);
     }
 }
