@@ -55,7 +55,7 @@ namespace DemoWeb.Controllers
             {
                 await _houseService.CreateAsync(house);
 
-                return new Models.Response(ResponseCode.Success);
+                return new Models.Response(ResponseCode.Success, "新增成功");
             }
             catch (Exception ex)
             {
@@ -74,7 +74,7 @@ namespace DemoWeb.Controllers
             {
                 await _houseService.ModifyAsync(house);
 
-                return new Models.Response(ResponseCode.Success);
+                return new Models.Response(ResponseCode.Success, "更新成功");
             }
             catch (Exception ex)
             {
@@ -94,7 +94,7 @@ namespace DemoWeb.Controllers
             {
                 await _houseService.DeleteAsync(id);
 
-                return new Models.Response(ResponseCode.Success);
+                return new Models.Response(ResponseCode.Success, "刪除成功");
             }
             catch (Exception ex)
             {
