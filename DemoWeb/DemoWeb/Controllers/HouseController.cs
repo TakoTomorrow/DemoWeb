@@ -18,7 +18,11 @@ namespace DemoWeb.Controllers
             _houseService = houseService;
         }
 
-        // GET api/<HouseController>/5
+        /// <summary>
+        /// 取得房屋資料
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet("{id}")]
         public async Task<Response<HouseDTO>> GetAsync(int id)
         {
