@@ -12,10 +12,15 @@ namespace DemoWeb.DataBaseContext
         {
         }
 
-
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(_connectionString);
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            // Configure the entity properties and relationships here
+            modelBuilder.Entity<House>().Configure();
         }
 
         public DbSet<House> Houses { get; set; }       
