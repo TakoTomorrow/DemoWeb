@@ -68,7 +68,7 @@ namespace DemoWeb.Controllers
         /// </summary>
         /// <param name="house"></param>
         [HttpPut]
-        public async Task<Response> Modify([FromBody] HouseDTO house)
+        public async Task<Response> ModifyAsync([FromBody] HouseDTO house)
         {
             try
             {
