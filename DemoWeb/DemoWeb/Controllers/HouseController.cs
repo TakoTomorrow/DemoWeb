@@ -31,14 +31,17 @@ namespace DemoWeb.Controllers
         /// <param name="house"></param>
         /// <returns></returns>
         [HttpPost]
-        public async Task CreateAsync([FromBody] HouseDTO house)
+        public async Task<Response> CreateAsync([FromBody] HouseDTO house)
         {
             try
             {
-                await _houseService.CreateAsync(house);               
+                await _houseService.CreateAsync(house);
+
+                return new Models.Response(ResponseCode.Success);
             }
             catch (Exception ex)
             {
+                return new Models.Response(ResponseCode.Error, ex.Message);
             }            
         }
 
