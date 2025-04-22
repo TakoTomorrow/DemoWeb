@@ -15,7 +15,9 @@ namespace DemoWeb.DataAcesses
         }
 
         public async Task CreateAsync(House house)
-        {                       
+        {            
+            await _context.Houses.AddAsync(house);
+            await _context.SaveChangesAsync();
         }
     }
 }
