@@ -63,10 +63,23 @@ namespace DemoWeb.Controllers
             }            
         }
 
-        // PUT api/<HouseController>/5
-        [HttpPut("{id}")]
-        public void Update(int id, [FromBody] string value)
+        /// <summary>
+        /// 更新房屋資料
+        /// </summary>
+        /// <param name="house"></param>
+        [HttpPut]
+        public async Task<Response> Modify([FromBody] HouseDTO house)
         {
+            try
+            {
+                await _houseService.ModifyAsync(house);
+
+                return new Models.Response(ResponseCode.Success);
+            }
+            catch (Exception ex)
+            {
+                return new Models.Response(ResponseCode.Error, ex.Message);
+            }      
         }
 
         // DELETE api/<HouseController>/5

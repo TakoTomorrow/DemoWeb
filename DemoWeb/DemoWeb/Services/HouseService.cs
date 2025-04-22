@@ -32,7 +32,19 @@ namespace DemoWeb.Services
                 return null!;
 
             return this.Convert(house);
-        }        
+        }
+
+        public async Task ModifyAsync(HouseDTO dto)
+        {
+            var oldHouse = await _houseDA.GetAsync(dto.Id);
+
+            if (oldHouse == null)
+                return;
+
+            var newHouse = this.Convert(dto);
+
+            await _houseDA.ModifyAsync(newHouse);
+        }
 
         /// <summary>
         /// 轉換 DTO 為 DB Table

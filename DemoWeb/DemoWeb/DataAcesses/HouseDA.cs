@@ -27,5 +27,11 @@ namespace DemoWeb.DataAcesses
                 .Where(h => h.Id == id)            
                 .FirstOrDefaultAsync())!;
         }
+
+        public async Task ModifyAsync(House house)
+        {
+            _context.Houses.Update(house);
+            await _context.SaveChangesAsync();
+        }
     }
 }
